@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مهر صنعت فیدار</title>
+  <style>
+    body {
+      font-family: "Vazir", Tahoma, sans-serif;
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #fefce8, #fef3c7);
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      min-height: 100vh;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      padding: 30px 40px;
+      background: linear-gradient(135deg, #0c4a6e, #075985, #0369a1);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(12, 74, 110, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+      border-radius: 20px;
+    }
+    .header > * {
+      position: relative;
+      z-index: 1;
+    }
+    .logo {
+      width: 200px;
+      height: 80px;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    .logo:hover {
+      transform: scale(1.05);
+    }
+    .header-text {
+      text-align: right;
+      flex: 1;
+      margin-right: 20px;
+    }
+    h1 {
+      color: #ffffff;
+      font-size: 2.5em;
+      margin: 0 0 5px 0;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      font-family: "Vazir", "Segoe UI", Tahoma, sans-serif;
+    }
+    h2 {
+      color: #ffffff;
+      font-size: 1.1em;
+      margin: 0;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      opacity: 0.9;
+    }
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    .service-card {
+      background: linear-gradient(135deg, #ffffff, #f8fafc);
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(12, 74, 110, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 2px solid transparent;
+      background-clip: padding-box;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(12, 74, 110, 0.2);
+      border: 2px solid #0369a1;
+    }
+    .service-icon {
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    .service-card h4 {
+      color: #0c4a6e;
+      font-size: 1.3em;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    .service-card p {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    
+    /* استایل‌های PDF */
+    .pdf-section {
+      margin-top: 60px;
+      position: relative;
+    }
+    
+    .pdf-container {
+      background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+      border-radius: 25px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.4);
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .pdf-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, #083344, #0369a1, #0284c7, #0ea5e9);
+      border-radius: 25px;
+      padding: 3px;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+    }
+    
+    .pdf-container::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      background: linear-gradient(45deg, rgba(30, 64, 175, 0.1), rgba(59, 130, 246, 0.05), rgba(15, 23, 42, 0.2));
+      border-radius: 20px;
+      pointer-events: none;
+    }
+    .pdf-section h3 {
+      color: #ffffff;
+      font-size: 2.2em;
+      margin-bottom: 30px;
+      text-align: center;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+      font-weight: bold;
+      background: linear-gradient(45deg, #0369a1, #fbbf24, #0369a1, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+    }
+    .pdf-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .pdf-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(12, 74, 110, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .pdf-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(12, 74, 110, 0.2);
+      border: 2px solid #0369a1;
+    }
+    .pdf-card iframe, .pdf-card img {
+      width: 100%;
+      height: 260px;
+      border: none;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+      background: #0b1220;
+    }
+
+    /* ویدیو */
+    .video-section {
+      margin: 50px auto 10px auto;
+      max-width: 1200px;
+      padding: 0 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .video-card {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #0369a1, #60a5fa, #fbbf24);
+      box-shadow: 0 20px 50px rgba(12, 74, 110, 0.35);
+      border: 3px solid transparent;
+      background-clip: padding-box;
+      width: 100%;
+      max-width: 1000px;
+    }
+    .video-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      padding: 3px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #0369a1, #fbbf24, #0369a1);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+              mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+              mask-composite: exclude;
+      pointer-events: none;
+    }
+    .video-wrapper { position: relative; aspect-ratio: 16 / 9; }
+    .video-wrapper iframe, .video-wrapper video {
+      width: 100%; height: 100%; border: 0; display: block; border-radius: 17px;
+      background: #000;
+    }
+    
+    .video-overlay {
+      position: absolute;
+      left: 50%;
+      bottom: 12px;
+      transform: translateX(-50%);
+      background: rgba(0, 0, 0, 0.55);
+      color: #f8fafc;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .video-title {
+      margin: 14px 12px 0 12px; color: #e2e8f0; font-weight: 700; text-align: right;
+    }
+    @media (max-width: 768px) {
+      .video-section { margin: 30px auto 0 auto; }
+      .video-card { max-width: 100%; border-radius: 16px; }
+      .video-card::before { border-radius: 16px; }
+      .video-wrapper { aspect-ratio: 16 / 9; }
+      .video-wrapper iframe, .video-wrapper video { border-radius: 14px; }
+      .video-overlay { bottom: 8px; padding: 6px 12px; font-size: 0.85em; }
+    }
+    .pdf-card h4 {
+      margin: 15px 0;
+      font-size: 16px;
+      color: #0c4a6e;
+      font-weight: bold;
+      padding: 0 15px;
+    }
+    #pdf-viewer {
+      margin-top: 50px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(30, 64, 175, 0.2);
+      overflow: hidden;
+    }
+    #pdf-viewer iframe {
+      width: 100%;
+      height: 800px;
+      border: none;
+      display: block;
+    }
+    
+    /* استایل‌های موبایل */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .header {
+        padding: 20px 15px;
+        margin-bottom: 25px;
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .logo {
+        width: 150px;
+        height: 60px;
+        margin-bottom: 15px;
+        align-self: center;
+      }
+      
+      .header-text {
+        text-align: center;
+        margin-right: 0;
+      }
+      
+      h1 {
+        font-size: 1.8em;
+        margin: 0 0 5px 0;
+      }
+      
+      h2 {
+        font-size: 0.9em;
+        letter-spacing: 1px;
+      }
+      
+      .main-content {
+        padding: 10px;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 30px;
+      }
+      
+      .service-card {
+        padding: 20px;
+      }
+      
+      .service-icon {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+      }
+      
+      .service-card h4 {
+        font-size: 1.1em;
+      }
+      
+      /* PDF های موبایل */
+      .pdf-section {
+        margin-top: 40px;
+      }
+      
+      .pdf-container {
+        padding: 20px;
+        border-radius: 20px;
+      }
+      
+      .pdf-section h3 {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+        background: linear-gradient(45deg, #0369a1, #fbbf24, #0369a1, #fbbf24);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      
+      .pdf-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 10px;
+      }
+      
+      .pdf-card iframe, .pdf-card img {
+        height: 250px;
+      }
+      
+      .pdf-card h4 {
+        font-size: 14px;
+        margin: 10px 0;
+        padding: 0 10px;
+      }
+      
+      #pdf-viewer {
+        margin-top: 30px;
+        border-radius: 10px;
+      }
+      
+      #pdf-viewer iframe {
+        height: 500px;
+      }
+    }
+    
+    /* استایل‌های تبلت */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .pdf-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .pdf-card iframe {
+        height: 280px;
+      }
+      
+      #pdf-viewer iframe {
+        height: 600px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="logo.png.jpg" alt="مهر صنعت فیدار" class="logo">
+    <div class="header-text">
+      <h1>مهر صنعت فیدار</h1>
+      <h2>MEHR SANAT FIDAR</h2>
+    </div>
+  </div>
+
+  <!-- محتوای اصلی -->
+  <div class="main-content">
+    <div class="services-grid">
+      <div class="service-card" onclick="window.open('https://mehrsanatco.com/','_blank')" style="cursor:pointer">
+        <div class="service-icon">🌐</div>
+        <h4 style="color: #0c4a6e;">mehrsanatco.com</h4>
+      </div>
+      <div class="service-card" onclick="window.open('https://instagram.com/mehrsanatorg','_blank')" style="cursor:pointer">
+        <div class="service-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="url(#instagram-gradient)">
+            <defs>
+              <linearGradient id="instagram-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#833ab4;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#fd1d1d;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#fcb045;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </div>
+        <h4 style="color: #0c4a6e;">@Mehrsanatorg</h4>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="#0c4a6e">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <h4>Contacts</h4>
+        <p style="margin:6px 0">Email: <a href="mailto:Info@mehrsanatco.com" style="color: #0c4a6e; text-decoration: none;">Info@mehrsanatco.com</a></p>
+        <p style="margin:0">Tel: <strong>40223808</strong> – <strong>40223813</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ویدیو معرفی (نسخه محلی) -->
+  <div class="video-section">
+    <div class="video-card">
+      <div class="video-wrapper" id="namashaWrap">
+        <iframe src="https://www.namasha.com/embed/3tDtTBjE" frameborder="0" allowfullscreen="true" title="ویدیو" style="width:100%;height:100%;border-radius:17px;background:#000"></iframe>
+        <div class="video-overlay">MEHR SANAT FIDAR</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- بخش PDF ها -->
+  <div class="pdf-section">
+    <h3><img src="logo.png.png" alt="لوگو" style="width: 40px; height: 40px; vertical-align: middle; margin-left: 10px;"> کاتالوگ محصولات</h3>
+    <div class="pdf-container">
+      <div class="pdf-grid">
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/13_2jh50AZF3Fd-UOaho2u3rqD_yzPd5F/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=13_2jh50AZF3Fd-UOaho2u3rqD_yzPd5F&sz=w1000" alt="MEHR SANAT REFERENCE">
+        <h4>Mehr Sanat Reference</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1JNP7txJ20E2d43FGeBR96Q9rIryX6KAf/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1JNP7txJ20E2d43FGeBR96Q9rIryX6KAf&sz=w1000" alt="Petkus - Product Overview">
+        <h4>Petkus - Product Overview</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1PJ6mkOlZScZVeKoZFDAdZqlbAWNdOH3Z/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1PJ6mkOlZScZVeKoZFDAdZqlbAWNdOH3Z&sz=w1000" alt="Petkus - Sorting Technology">
+        <h4>Petkus - Sorting Technology</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1_e4wCb8SiNjaQf2MmR7QJXhz0WVnb6hU/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1_e4wCb8SiNjaQf2MmR7QJXhz0WVnb6hU&sz=w1000" alt="Petkus - Storage Systems">
+        <h4>Petkus - Storage Systems</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1LAqfK5TCBnLJFFET1_DxZCJA6A-f9fOu/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1LAqfK5TCBnLJFFET1_DxZCJA6A-f9fOu&sz=w1000" alt="Symaga - Industrial Silos">
+        <h4>Symaga - Industrial Silos</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1RAEfnnZS-nyA1yfkE4YaGQgXcKEKCv_R/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1RAEfnnZS-nyA1yfkE4YaGQgXcKEKCv_R&sz=w1000" alt="Symaga - Technical Sheet">
+        <h4>Symaga - Technical Sheet</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1gTp_IhDz1Br1FGn7VamNUdBskGB-Sps1/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1gTp_IhDz1Br1FGn7VamNUdBskGB-Sps1&sz=w1000" alt="Vigan - Mobile">
+        <h4>Vigan - Mobile</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1GwUtfH3IBFV240HSCxR6tUG3Xb5Chvqm/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1GwUtfH3IBFV240HSCxR6tUG3Xb5Chvqm&sz=w1000" alt="Vigan - NIV">
+        <h4>Vigan - NIV</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1WJWnX6BkDmuZfVKpNgWF_jc3hqI3lEoB/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1WJWnX6BkDmuZfVKpNgWF_jc3hqI3lEoB&sz=w1000" alt="Vigan - Tower">
+        <h4>Vigan - Tower</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1P6SMp7ToEzgNqafcpbSNIDdwY5uWA56Z/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1P6SMp7ToEzgNqafcpbSNIDdwY5uWA56Z&sz=w1000" alt="Andreotti-Impianti-Sunflower-oil-extraction-plant">
+        <h4>Andreotti-Impianti-Sunflower-Oil-Extraction-Plant</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1y9r38HqBd7R4DwHGpH9nMg0vOXoAiqLm/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1y9r38HqBd7R4DwHGpH9nMg0vOXoAiqLm&sz=w1000" alt="Andreotti-Impianti-Vegetable-oil-refining-plant">
+        <h4>Andreotti-Impianti-Vegetable-Oil-Refining-Plant</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/1hEQdV9r3wMFZaKdJ-qk6A1P-de9co0ig/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=1hEQdV9r3wMFZaKdJ-qk6A1P-de9co0ig&sz=w1000" alt="Soytex Coffee">
+        <h4>Soytex Coffee</h4>
+      </div>
+      <div class="pdf-card" onclick="window.open('https://drive.google.com/file/d/17qfSiG_8dbAUDftO9sjN-GhpTCSu5zzZ/view', '_blank')">
+        <img src="https://drive.google.com/thumbnail?id=17qfSiG_8dbAUDftO9sjN-GhpTCSu5zzZ&sz=w1000" alt="Soytex - Grains, Dairy ingredients, Oilseeds, Pulses">
+        <h4>Soytex - Grains, Dairy Ingredients, Oilseeds, Pulses</h4>
+      </div>
+      </div>
+    </div>
+
+    <!-- نمایش PDF بزرگ حذف شد -->
+  </div>
+
+  <!-- اسکریپت openPDF حذف شد -->
+  <script>
+    function loadNamasha() {
+      var wrap = document.getElementById('namashaWrap');
+      if (!wrap) return;
+      var overlay = wrap.querySelector('.video-overlay');
+      var overlayHtml = overlay ? overlay.outerHTML : '';
+      wrap.innerHTML = '<iframe src="https://www.namasha.com/embed/3tDtTBjE" frameborder="0" allowfullscreen="true" title="ویدیو" style="width:100%;height:100%;border-radius:17px;background:#000"></iframe>' + overlayHtml;
+    }
+  </script>
+</body>
+</html>
